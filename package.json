@@ -1,6 +1,6 @@
 {
   "name": "@sudoo/time",
-  "version": "1.4.0",
+  "version": "1.0.0",
   "description": ":watch: Time Controller",
   "main": "index.js",
   "directories": {
