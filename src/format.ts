@@ -12,21 +12,23 @@ export type PreFormatResult = {
     readonly year: number;
     readonly month: number;
     readonly day: number;
+    readonly weekDay: number;
     readonly hour: number;
     readonly minute: number;
     readonly second: number;
     readonly millisecond: number;
 };
 
-export const preFormat = (utc: number): PreFormatResult => {
+export const preFormat = (date: Date): PreFormatResult => {
 
     return {
-        year: Math.floor(utc / TIME_IN_MILLISECONDS.YEAR) + TIME_START_YEAR,
-        month: Math.floor((utc % TIME_IN_MILLISECONDS.YEAR) / TIME_IN_MILLISECONDS.MONTH),
-        day: Math.floor((utc % TIME_IN_MILLISECONDS.MONTH) / TIME_IN_MILLISECONDS.DAY),
-        hour: Math.floor((utc % TIME_IN_MILLISECONDS.DAY) / TIME_IN_MILLISECONDS.HOUR),
-        minute: Math.floor((utc % TIME_IN_MILLISECONDS.HOUR) / TIME_IN_MILLISECONDS.MINUTE),
-        second: Math.floor((utc % TIME_IN_MILLISECONDS.MINUTE) / TIME_IN_MILLISECONDS.SECOND),
-        millisecond: (utc % TIME_IN_MILLISECONDS.SECOND),
+        year: date.getUTCFullYear(),
+        month: date.getUTCMonth() + 1,
+        day: date.getUTCDate(),
+        weekDay: date.getUTCDay(),
+        hour: date.getUTCHours(),
+        minute: date.getUTCMinutes(),
+        second: date.getUTCSeconds(),
+        millisecond: date.getUTCMilliseconds(),
     };
 };
