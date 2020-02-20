@@ -5,28 +5,59 @@
  */
 
 import { Time } from "./time";
+import { TIMEZONE } from "./declare";
+import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
+import { fixYear, fixMonth, fixInteger } from "./util";
 
 export class TimeZone {
 
-    public static offset(zone: number): TimeZone {
+    public static offset(zone: TIMEZONE): TimeZone {
 
         return new TimeZone(zone);
     }
 
-    private readonly _zone: number;
+    private readonly _zone: TIMEZONE;
 
-    private constructor(zone: number) {
+    private constructor(zone: TIMEZONE) {
 
         this._zone = zone;
     }
 
-    public getNow(): Time {
+    public fromNow(): Time {
 
         return Time.withTime(Date.now(), this._zone);
     }
 
-    public getTime(date: Date): Time {
+    public fromTime(time: number): Time {
+
+        return Time.withTime(time, this._zone);
+    }
+
+    public fromDate(date: Date): Time {
 
         return Time.withDate(date, this._zone);
+    }
+
+    public fromNumber(
+        year: number = 1970,
+        month: number = 1,
+        day: number = 1,
+        hour: number = 0,
+        minute: number = 0,
+        second: number = 0,
+        millisecond: number = 0,
+    ) {
+
+        const unconfirmed: number =
+            fixYear(year) * TIME_IN_MILLISECONDS.YEAR +
+            fixMonth(month) * TIME_IN_MILLISECONDS.MONTH +
+            day * TIME_IN_MILLISECONDS.DAY +
+            hour * TIME_IN_MILLISECONDS.HOUR +
+            minute * TIME_IN_MILLISECONDS.MINUTE +
+            second * TIME_IN_MILLISECONDS.SECOND +
+            millisecond;
+
+        const time: number = fixInteger(unconfirmed);
+        return Time.withTime(time, this._zone);
     }
 }
