@@ -6,10 +6,16 @@
 
 export class Time {
 
-    public static create(date: Date, zone: number): Time {
+    public static withDate(date: Date, zone: number): Time {
 
         const cloned: Date = new Date(date.getTime());
         return new Time(cloned, zone);
+    }
+
+    public static withTime(time: number, zone: number): Time {
+
+        const date: Date = new Date(time);
+        return new Time(date, zone);
     }
 
     private readonly _date: Date;

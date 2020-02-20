@@ -16,7 +16,9 @@
     "url": "https://github.com/SudoDotDog/Sudoo-Time/issues"
   },
   "homepage": "https://github.com/SudoDotDog/Sudoo-Time#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@sudoo/magic": "^1.4.5"
+  },
   "devDependencies": {
     "@sudoo/io": "^1.6.2",
     "@sudoo/triforce": "^2.1.0"

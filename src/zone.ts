@@ -8,7 +8,7 @@ import { Time } from "./time";
 
 export class TimeZone {
 
-    public static create(zone: number): TimeZone {
+    public static offset(zone: number): TimeZone {
 
         return new TimeZone(zone);
     }
@@ -20,8 +20,13 @@ export class TimeZone {
         this._zone = zone;
     }
 
-    public getTime(): Time {
+    public getNow(): Time {
 
-        return Time.create(new Date(), this._zone);
+        return Time.withTime(Date.now(), this._zone);
+    }
+
+    public getTime(date: Date): Time {
+
+        return Time.withDate(date, this._zone);
     }
 }
