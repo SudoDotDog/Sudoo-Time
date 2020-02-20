@@ -5,6 +5,7 @@
  */
 
 export * from "./declare";
+export * from "./format";
 export * from "./slide";
 export * from "./time";
 export * from "./util";

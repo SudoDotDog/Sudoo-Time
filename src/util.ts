@@ -4,9 +4,7 @@
  * @description Util
  */
 
-import { TIMEZONE } from "./declare";
-
-const MAX_TIME_INTEGER = 9007199254740991;
+import { MAX_TIME_INTEGER, TIMEZONE, TIME_START_YEAR } from "./declare";
 
 export const verifyZoneOffset = (zone: number): boolean => {
 
@@ -21,11 +19,11 @@ export const fixTimeInteger = (target: number): number => {
 
 export const fixYear = (year: number): number => {
 
-    if (year < 1970) {
+    if (year < TIME_START_YEAR) {
         return 0;
     }
 
-    return year - 1970;
+    return year - TIME_START_YEAR;
 };
 
 export const fixMonth = (month: number): number => {

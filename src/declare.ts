@@ -4,6 +4,9 @@
  * @description Declare
  */
 
+export const MAX_TIME_INTEGER = 9007199254740991;
+export const TIME_START_YEAR = 1970;
+
 export enum TIMEZONE {
 
     Y = -12,
