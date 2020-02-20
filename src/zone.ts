@@ -4,10 +4,10 @@
  * @description Zone
  */
 
-import { Time } from "./time";
-import { TIMEZONE } from "./declare";
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
-import { fixYear, fixMonth, fixInteger } from "./util";
+import { TIMEZONE } from "./declare";
+import { Time } from "./time";
+import { fixMonth, fixYear } from "./util";
 
 export class TimeZone {
 
@@ -48,7 +48,7 @@ export class TimeZone {
         millisecond: number = 0,
     ) {
 
-        const unconfirmed: number =
+        const time: number =
             fixYear(year) * TIME_IN_MILLISECONDS.YEAR +
             fixMonth(month) * TIME_IN_MILLISECONDS.MONTH +
             day * TIME_IN_MILLISECONDS.DAY +
@@ -57,7 +57,6 @@ export class TimeZone {
             second * TIME_IN_MILLISECONDS.SECOND +
             millisecond;
 
-        const time: number = fixInteger(unconfirmed);
         return Time.withTime(time, this._zone);
     }
 }

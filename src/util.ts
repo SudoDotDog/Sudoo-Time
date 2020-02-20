@@ -6,15 +6,17 @@
 
 import { TIMEZONE } from "./declare";
 
+const MAX_TIME_INTEGER = 9007199254740991;
+
 export const verifyZoneOffset = (zone: number): boolean => {
 
     const reverseCheckResult: string = TIMEZONE[zone];
     return typeof reverseCheckResult === 'string';
 };
 
-export const fixInteger = (target: number): number => {
+export const fixTimeInteger = (target: number): number => {
 
-    return Math.floor(Math.min(Number.MAX_SAFE_INTEGER, Math.max(0, target)));
+    return Math.floor(Math.min(MAX_TIME_INTEGER, Math.max(0, target)));
 }
 
 export const fixYear = (year: number): number => {
