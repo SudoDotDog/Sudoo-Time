@@ -8,7 +8,7 @@
 import * as Chance from "chance";
 import { preFormat, PreFormatResult } from "../../src";
 
-describe.only('Given [Format] helper functions', (): void => {
+describe('Given [Format] helper functions', (): void => {
 
     const chance: Chance.Chance = new Chance('time-format');
 
