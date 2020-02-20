@@ -5,4 +5,6 @@
  */
 
 export * from "./slide";
+export * from "./time";
+export * from "./zone";
 
