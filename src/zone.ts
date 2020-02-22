@@ -7,7 +7,7 @@
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
 import { TIMEZONE } from "./declare";
 import { Time } from "./time";
-import { fixMonth, fixYear } from "./util";
+import { fixMonth } from "./util";
 
 export class TimeZone {
 
@@ -48,15 +48,24 @@ export class TimeZone {
         millisecond: number = 0,
     ) {
 
-        const time: number =
-            fixYear(year) * TIME_IN_MILLISECONDS.YEAR +
-            fixMonth(month) * TIME_IN_MILLISECONDS.MONTH +
-            day * TIME_IN_MILLISECONDS.DAY +
-            hour * TIME_IN_MILLISECONDS.HOUR +
-            minute * TIME_IN_MILLISECONDS.MINUTE +
-            second * TIME_IN_MILLISECONDS.SECOND +
-            millisecond;
+        const date: Date = new Date();
 
-        return Time.withTime(time, this._zone);
+        date.setUTCFullYear(year);
+        date.setUTCMonth(fixMonth(month));
+        date.setUTCDate(day);
+        date.setUTCHours(hour);
+        date.setUTCMinutes(minute);
+        date.setUTCSeconds(second);
+        date.setUTCMilliseconds(millisecond);
+
+        const preUTCTime: number = date.getTime();
+        const fixedUTCTime: number = preUTCTime - this.getTimeOffset();
+
+        return Time.withTime(fixedUTCTime, this._zone);
+    }
+
+    public getTimeOffset(): number {
+
+        return Math.floor(this._zone * TIME_IN_MILLISECONDS.HOUR);
     }
 }
