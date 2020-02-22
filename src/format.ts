@@ -4,9 +4,6 @@
  * @description Format
  */
 
-import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
-import { TIME_START_YEAR } from "./declare";
-
 export type PreFormatResult = {
 
     readonly year: number;
