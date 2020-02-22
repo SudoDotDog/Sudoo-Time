@@ -47,4 +47,4 @@ export enum TIMEZONE {
     MS = 12.75,
     MD1 = 13,
     MD2 = 14,
-};
+}

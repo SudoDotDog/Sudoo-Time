@@ -5,6 +5,7 @@
  */
 
 import { TIMEZONE } from "./declare";
+import { preFormat, PreFormatResult } from "./format";
 import { fixTimeInteger } from "./util";
 
 export class Time {
@@ -28,9 +29,15 @@ export class Time {
         this._zone = zone;
     }
 
+    public toDate(): Date {
+
+        return new Date(this._utc);
+    }
+
     public toUTCString(): string {
 
-        const date = new Date(this._utc);
+        const date: Date = new Date(this._utc);
+        const pre: PreFormatResult = preFormat(date);
         return ''; // TODO
     }
 }
