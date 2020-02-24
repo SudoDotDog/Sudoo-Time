@@ -4,11 +4,11 @@
  * @description Util
  */
 
-import { DATE_START_YEAR, MAX_TIME_INTEGER, TIMEZONE } from "./declare";
+import { DATE_START_YEAR, MAX_TIME_INTEGER, ZONE_SYMBOL } from "./declare";
 
 export const verifyZoneOffset = (zone: number): boolean => {
 
-    const reverseCheckResult: string = TIMEZONE[zone];
+    const reverseCheckResult: string = ZONE_SYMBOL[zone];
     return typeof reverseCheckResult === 'string';
 };
 

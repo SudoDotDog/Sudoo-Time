@@ -7,7 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { Time, TIMEZONE } from "../../src";
+import { Time, ZONE_SYMBOL } from "../../src";
 
 describe('Given {Time} class', (): void => {
 
@@ -16,7 +16,7 @@ describe('Given {Time} class', (): void => {
     it('should be able to construct', (): void => {
 
         const now: Date = new Date();
-        const time: Time = Time.withDate(now, TIMEZONE.C);
+        const time: Time = Time.withDate(now, ZONE_SYMBOL.C);
 
         expect(time).to.be.instanceOf(Time);
     });

@@ -7,7 +7,7 @@
 export const MAX_TIME_INTEGER = 9007199254740991;
 export const DATE_START_YEAR = 1970;
 
-export enum TIMEZONE {
+export enum ZONE_SYMBOL {
 
     Y = -12,
     X = -11,

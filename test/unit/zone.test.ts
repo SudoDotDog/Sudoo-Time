@@ -8,7 +8,7 @@
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
 import { expect } from "chai";
 import * as Chance from "chance";
-import { TIMEZONE } from "../../src/declare";
+import { ZONE_SYMBOL } from "../../src/declare";
 import { Time } from "../../src/time";
 import { TimeZone } from "../../src/zone";
 
@@ -19,7 +19,7 @@ describe('Given {TimeZone} class', (): void => {
 
     it('should be able to get time zone offset', (): void => {
 
-        const area: TIMEZONE = TIMEZONE.Y; // -12
+        const area: ZONE_SYMBOL = ZONE_SYMBOL.Y; // -12
         const zone: TimeZone = TimeZone.offset(area);
 
         const result: number = zone.getTimeOffset();
@@ -29,7 +29,7 @@ describe('Given {TimeZone} class', (): void => {
 
     it('should be able to get time class from time', (): void => {
 
-        const area: TIMEZONE = TIMEZONE.Y; // -12
+        const area: ZONE_SYMBOL = ZONE_SYMBOL.Y; // -12
         const zone: TimeZone = TimeZone.offset(area);
 
         const time: Time = zone.fromNumber(2000, 1, 1);
@@ -52,7 +52,7 @@ describe('Given {TimeZone} class', (): void => {
 
     it('should be able to fix utc date', (): void => {
 
-        const area: TIMEZONE = TIMEZONE.S; // -6
+        const area: ZONE_SYMBOL = ZONE_SYMBOL.S; // -6
         const zone: TimeZone = TimeZone.offset(area);
 
         const utcDate: Date = new Date();
