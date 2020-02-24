@@ -5,21 +5,20 @@
  */
 
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
-import { ZONE_SYMBOL } from "./declare";
-import { ZONE_AREA } from "./static";
+import { TIMEZONE } from "./declare";
 import { Time } from "./time";
 import { fixMonth } from "./util";
 
 export class TimeZone {
 
-    public static offset(zone: ZONE_SYMBOL | ZONE_AREA): TimeZone {
+    public static offset(zone: TIMEZONE): TimeZone {
 
         return new TimeZone(zone);
     }
 
-    private readonly _zone: ZONE_SYMBOL | ZONE_AREA;
+    private readonly _zone: TIMEZONE;
 
-    private constructor(zone: ZONE_SYMBOL | ZONE_AREA) {
+    private constructor(zone: TIMEZONE) {
 
         this._zone = zone;
     }

@@ -8,7 +8,7 @@
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
 import { expect } from "chai";
 import * as Chance from "chance";
-import { ZONE_AREA } from "../../src";
+import { TIMEZONE, ZONE_AREA } from "../../src";
 import { Time } from "../../src/time";
 import { TimeZone } from "../../src/zone";
 
@@ -19,7 +19,7 @@ describe('Given {TimeZone} class', (): void => {
 
     it('should be able to get time zone offset', (): void => {
 
-        const area: ZONE_AREA = ZONE_AREA["America/Los_Angeles"]; // -12
+        const area: TIMEZONE = ZONE_AREA["America/Los_Angeles"]; // -12
         const zone: TimeZone = TimeZone.offset(area);
 
         const result: number = zone.getTimeOffset();
@@ -29,7 +29,7 @@ describe('Given {TimeZone} class', (): void => {
 
     it('should be able to get time class from time', (): void => {
 
-        const area: ZONE_AREA = ZONE_AREA["America/Los_Angeles"]; // -12
+        const area: TIMEZONE = ZONE_AREA["America/Los_Angeles"]; // -12
         const zone: TimeZone = TimeZone.offset(area);
 
         const time: Time = zone.fromNumber(2000, 1, 1);
@@ -52,7 +52,7 @@ describe('Given {TimeZone} class', (): void => {
 
     it('should be able to fix utc date', (): void => {
 
-        const area: ZONE_AREA = ZONE_AREA["America/Los_Angeles"]; // -6
+        const area: TIMEZONE = ZONE_AREA["America/Los_Angeles"]; // -6
         const zone: TimeZone = TimeZone.offset(area);
 
         const utcDate: Date = new Date();

@@ -4,6 +4,8 @@
  * @description Declare
  */
 
+import { ZONE_AREA } from "./static";
+
 export const MAX_TIME_INTEGER = 9007199254740991;
 export const DATE_START_YEAR = 1970;
 
@@ -48,3 +50,5 @@ export enum ZONE_SYMBOL {
     MD1 = 13,
     MD2 = 14,
 }
+
+export type TIMEZONE = ZONE_SYMBOL | ZONE_AREA;
