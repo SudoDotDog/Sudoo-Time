@@ -60,15 +60,16 @@ describe('Given {TimeZone} class', (): void => {
         utcDate.setUTCFullYear(2020);
         utcDate.setUTCMonth(0);
         utcDate.setUTCDate(10);
-        utcDate.setUTCHours(0);
+        utcDate.setUTCHours(8);
         utcDate.setUTCMinutes(0);
         utcDate.setUTCSeconds(0);
         utcDate.setUTCMilliseconds(0);
 
         const fixedDateTime: number = zone.fixUTCDate(utcDate);
-        const fixedDate: Date = new Date(fixedDateTime);
 
-        console.log(utcDate.toUTCString(), fixedDate.toUTCString());
+        const difference: number = fixedDateTime - utcDate.getTime();
+
+        expect(difference).to.be.equal(area * TIME_IN_MILLISECONDS.HOUR);
     });
 });
 // tslint:enable: no-magic-numbers
