@@ -4,8 +4,9 @@
  * @description Time
  */
 
+import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
 import { TIMEZONE } from "./declare";
-import { preFormat, PreFormatResult } from "./format";
+import { formatWithPattern, preFormat, PreFormatResult } from "./format";
 import { fixTimeInteger } from "./util";
 
 export class Time {
@@ -36,10 +37,27 @@ export class Time {
         return new Date(this._utc);
     }
 
-    public toUTCString(): string {
+    public toUTCString(pattern: string): string {
 
         const date: Date = new Date(this._utc);
         const pre: PreFormatResult = preFormat(date);
-        return ''; // TODO
+        return formatWithPattern(pre, pattern);
+    }
+
+    public toString(pattern: string): string {
+
+        const date: Date = new Date(this.getLocalTime());
+        const pre: PreFormatResult = preFormat(date);
+        return formatWithPattern(pre, pattern);
+    }
+
+    public getLocalTime(): number {
+
+        return this._utc + this.getTimeOffset();
+    }
+
+    public getTimeOffset(): number {
+
+        return Math.floor(this._zone * TIME_IN_MILLISECONDS.HOUR);
     }
 }
