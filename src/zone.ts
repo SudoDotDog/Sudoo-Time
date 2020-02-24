@@ -58,18 +58,23 @@ export class TimeZone {
         date.setUTCSeconds(second);
         date.setUTCMilliseconds(millisecond);
 
-        const fixedUTCTime: number = this.fixUTCDate(date);
+        const fixedUTCTime: number = this.reverseFixUTCDate(date);
 
         return Time.withTime(fixedUTCTime, this._zone);
     }
 
-    public fixUTCDate(date: Date): number {
+    public reverseFixUTCDate(date: Date): number {
 
         const preUTCTime: number = date.getTime();
-        return this.fixUTCTime(preUTCTime);
+        return this.reverseFixUTCTime(preUTCTime);
     }
 
-    public fixUTCTime(utcTime: number): number {
+    public reverseFixUTCTime(utcTime: number): number {
+
+        return utcTime - this.getTimeOffset();
+    }
+
+    public mergeFromUTCTime(utcTime: number): number {
 
         return utcTime + this.getTimeOffset();
     }

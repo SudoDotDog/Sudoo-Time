@@ -47,7 +47,7 @@ describe('Given {TimeZone} class', (): void => {
 
         const difference: number = utcTime - utcDate.getTime();
 
-        expect(difference).to.be.equal(area * TIME_IN_MILLISECONDS.HOUR);
+        expect(difference).to.be.equal(area * TIME_IN_MILLISECONDS.HOUR * -1);
     });
 
     it('should be able to fix utc date', (): void => {
@@ -65,11 +65,11 @@ describe('Given {TimeZone} class', (): void => {
         utcDate.setUTCSeconds(0);
         utcDate.setUTCMilliseconds(0);
 
-        const fixedDateTime: number = zone.fixUTCDate(utcDate);
+        const fixedDateTime: number = zone.reverseFixUTCDate(utcDate);
 
         const difference: number = fixedDateTime - utcDate.getTime();
 
-        expect(difference).to.be.equal(area * TIME_IN_MILLISECONDS.HOUR);
+        expect(difference).to.be.equal(area * TIME_IN_MILLISECONDS.HOUR * -1);
     });
 });
 // tslint:enable: no-magic-numbers
