@@ -29,8 +29,10 @@ export class Time {
         this._zone = zone;
     }
 
-    public toDate(): Date {
-
+    public getTime(): number {
+        return this._utc;
+    }
+    public getDate(): Date {
         return new Date(this._utc);
     }
 

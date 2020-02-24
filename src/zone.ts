@@ -46,7 +46,7 @@ export class TimeZone {
         minute: number = 0,
         second: number = 0,
         millisecond: number = 0,
-    ) {
+    ): Time {
 
         const date: Date = new Date();
 
@@ -59,7 +59,7 @@ export class TimeZone {
         date.setUTCMilliseconds(millisecond);
 
         const preUTCTime: number = date.getTime();
-        const fixedUTCTime: number = preUTCTime - this.getTimeOffset();
+        const fixedUTCTime: number = preUTCTime + this.getTimeOffset();
 
         return Time.withTime(fixedUTCTime, this._zone);
     }
