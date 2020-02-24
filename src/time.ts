@@ -7,24 +7,25 @@
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
 import { ZONE_SYMBOL } from "./declare";
 import { formatWithPattern, preFormat, PreFormatResult } from "./format";
+import { ZONE_AREA } from "./static";
 import { fixTimeInteger } from "./util";
 
 export class Time {
 
-    public static withDate(date: Date, zone: ZONE_SYMBOL): Time {
+    public static withDate(date: Date, zone: ZONE_SYMBOL | ZONE_AREA): Time {
 
         return new Time(date.getTime(), zone);
     }
 
-    public static withTime(time: number, zone: ZONE_SYMBOL): Time {
+    public static withTime(time: number, zone: ZONE_SYMBOL | ZONE_AREA): Time {
 
         return new Time(time, zone);
     }
 
     private readonly _utc: number;
-    private readonly _zone: ZONE_SYMBOL;
+    private readonly _zone: ZONE_SYMBOL | ZONE_AREA;
 
-    private constructor(utc: number, zone: ZONE_SYMBOL) {
+    private constructor(utc: number, zone: ZONE_SYMBOL | ZONE_AREA) {
 
         this._utc = fixTimeInteger(utc);
         this._zone = zone;

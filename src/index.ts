@@ -7,6 +7,7 @@
 export * from "./declare";
 export * from "./format";
 export * from "./slide";
+export * from "./static";
 export * from "./time";
 export * from "./util";
 export * from "./zone";
