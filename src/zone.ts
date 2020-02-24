@@ -58,10 +58,20 @@ export class TimeZone {
         date.setUTCSeconds(second);
         date.setUTCMilliseconds(millisecond);
 
-        const preUTCTime: number = date.getTime();
-        const fixedUTCTime: number = preUTCTime + this.getTimeOffset();
+        const fixedUTCTime: number = this.fixUTCDate(date);
 
         return Time.withTime(fixedUTCTime, this._zone);
+    }
+
+    public fixUTCDate(date: Date): number {
+
+        const preUTCTime: number = date.getTime();
+        return this.fixUTCTime(preUTCTime);
+    }
+
+    public fixUTCTime(utcTime: number): number {
+
+        return utcTime + this.getTimeOffset();
     }
 
     public getTimeOffset(): number {
