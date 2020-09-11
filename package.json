@@ -2,10 +2,6 @@
   "name": "@sudoo/time",
   "version": "1.0.0",
   "description": ":watch: Time Controller",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SudoDotDog/Sudoo-Time.git"
@@ -36,9 +32,6 @@
       "text-summary"
     ],
     "report-dir": "coverage",
-    "require": [
-      "./test/tshook.js"
-    ],
     "sourceMap": true
   }
 }
