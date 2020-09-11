@@ -11,6 +11,7 @@ import { Time, ZONE_AREA } from "../../src";
 
 describe('Given {Time} class', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('time-time');
 
     it('should be able to construct', (): void => {

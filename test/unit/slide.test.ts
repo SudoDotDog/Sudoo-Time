@@ -11,6 +11,7 @@ import { slideCurrentDate } from "../../src/slide";
 
 describe('Given [Slide] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('time-slide');
 
     it('should be able create current date', (): void => {

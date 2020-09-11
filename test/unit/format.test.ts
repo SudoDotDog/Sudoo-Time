@@ -11,6 +11,7 @@ import { preFormat, PreFormatResult } from "../../src";
 
 describe('Given [Format] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('time-format');
 
     it('should be able pre format date', (): void => {

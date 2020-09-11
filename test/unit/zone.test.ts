@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 /**
  * @author WMXPY
  * @namespace Time
@@ -12,9 +13,9 @@ import { TIMEZONE, ZONE_AREA } from "../../src";
 import { Time } from "../../src/time";
 import { TimeZone } from "../../src/zone";
 
-// tslint:disable: no-magic-numbers
 describe('Given {TimeZone} class', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('time-zone');
 
     it('should be able to get time zone offset', (): void => {
