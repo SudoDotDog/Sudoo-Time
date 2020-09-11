@@ -9,6 +9,8 @@ import { TIMEZONE } from "./declare";
 import { Time } from "./time";
 import { fixMonth } from "./util";
 
+const EPOCH_YEAR = 1970;
+
 export class TimeZone {
 
     public static offset(zone: TIMEZONE): TimeZone {
@@ -39,7 +41,7 @@ export class TimeZone {
     }
 
     public fromNumber(
-        year: number = 1970,
+        year: number = EPOCH_YEAR,
         month: number = 1,
         day: number = 1,
         hour: number = 0,
