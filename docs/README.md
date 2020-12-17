@@ -6,3 +6,11 @@
 [![downloads](https://img.shields.io/npm/dm/@sudoo/time.svg)](https://www.npmjs.com/package/@sudoo/time)
 
 :watch: Time Controller
+
+## Install
+
+```sh
+yarn add @sudoo/time
+# Or
+npm install @sudoo/time --save
+```
