@@ -18,10 +18,10 @@ export class Duration {
         return new Duration(config);
     }
 
-    private milliseconds: number;
+    private readonly _milliseconds: number;
 
     private constructor(config: DurationConfig) {
 
-        this.milliseconds = config.seconds as number;
+        this._milliseconds = config.seconds as number;
     }
 }
