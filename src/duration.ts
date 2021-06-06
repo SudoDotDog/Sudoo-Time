@@ -39,4 +39,31 @@ export class Duration {
             floor,
         );
     }
+
+    public toMinutes(floor?: boolean): number {
+
+        return floorIfNeeded(
+            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+            this.toSeconds() / 60,
+            floor,
+        );
+    }
+
+    public toHours(floor?: boolean): number {
+
+        return floorIfNeeded(
+            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+            this.toMinutes() / 60,
+            floor,
+        );
+    }
+
+    public toDays(floor?: boolean): number {
+
+        return floorIfNeeded(
+            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+            this.toHours() / 24,
+            floor,
+        );
+    }
 }
