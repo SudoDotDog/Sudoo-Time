@@ -24,4 +24,14 @@ export class Duration {
 
         this._milliseconds = config.seconds as number;
     }
+
+    public toMilliseconds(): number {
+
+        return this._milliseconds;
+    }
+
+    public toSeconds(): number {
+
+        return this.toMilliseconds() / 1000;
+    }
 }
