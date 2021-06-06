@@ -24,7 +24,7 @@ export class Duration {
 
     private constructor(config: DurationConfig) {
 
-        this._milliseconds = config.seconds as number;
+        this._milliseconds = this._parseMilliseconds(config);
     }
 
     public toMilliseconds(): number {
@@ -65,5 +65,10 @@ export class Duration {
             this.toHours() / 24,
             floor,
         );
+    }
+
+    private _parseMilliseconds(config: DurationConfig): number {
+
+        return 0;
     }
 }
