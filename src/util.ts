@@ -38,3 +38,16 @@ export const padValue = (value: number | string, totalLength: number, pad: strin
 
     return pad.repeat(difference) + fixed;
 };
+
+export const floorIfNeeded = (value: number, floor?: boolean): number => {
+
+    if (typeof floor !== 'boolean') {
+        return value;
+    }
+
+    if (floor) {
+        return Math.floor(value);
+    }
+
+    return value;
+};

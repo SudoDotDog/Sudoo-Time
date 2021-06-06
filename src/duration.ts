@@ -4,6 +4,8 @@
  * @description Duration
  */
 
+import { floorIfNeeded } from "./util";
+
 export type DurationConfig = {
 
     readonly hours?: number;
@@ -30,8 +32,11 @@ export class Duration {
         return this._milliseconds;
     }
 
-    public toSeconds(): number {
+    public toSeconds(floor?: boolean): number {
 
-        return this.toMilliseconds() / 1000;
+        return floorIfNeeded(
+            this.toMilliseconds() / 1000,
+            floor,
+        );
     }
 }
