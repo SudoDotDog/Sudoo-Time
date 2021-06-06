@@ -28,9 +28,11 @@ const getAssertNumber = (value?: number): number => {
 
 export type DurationConfig = {
 
+    readonly days?: number;
     readonly hours?: number;
     readonly minutes?: number;
     readonly seconds?: number;
+    readonly milliseconds?: number;
 };
 
 export class Duration {
@@ -89,6 +91,16 @@ export class Duration {
 
     private _parseMilliseconds(config: DurationConfig): number {
 
-        return 0;
+        let milliseconds: number = 0;
+
+        milliseconds += getAssertNumber(config.milliseconds);
+        milliseconds += getAssertNumber(config.seconds) * 1000;
+        /* eslint-disable @typescript-eslint/no-magic-numbers */
+        milliseconds += getAssertNumber(config.minutes) * 1000 * 60;
+        milliseconds += getAssertNumber(config.hours) * 1000 * 60 * 60;
+        milliseconds += getAssertNumber(config.days) * 1000 * 60 * 60 * 24;
+        /* eslint-enable @typescript-eslint/no-magic-numbers */
+
+        return milliseconds;
     }
 }
