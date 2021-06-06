@@ -4,7 +4,27 @@
  * @description Duration
  */
 
-import { floorIfNeeded } from "./util";
+const floorIfNeeded = (value: number, floor?: boolean): number => {
+
+    if (typeof floor !== 'boolean') {
+        return value;
+    }
+
+    if (floor) {
+        return Math.floor(value);
+    }
+
+    return value;
+};
+
+const getAssertNumber = (value?: number): number => {
+
+    if (typeof value === 'number') {
+        return value;
+    }
+
+    return 0;
+};
 
 export type DurationConfig = {
 
