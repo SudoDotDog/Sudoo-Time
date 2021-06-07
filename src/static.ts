@@ -5,7 +5,7 @@
  */
 
 /* spell-checker: disable */
-export const enum ZONE_AREA {
+export enum ZONE_AREA {
 
     "Africa/Abidjan" = 0,
     "Africa/Accra" = 0,
@@ -602,3 +602,5 @@ export const enum ZONE_AREA {
     "Zulu" = 0,
 }
 /* spell-checker: enable */
+
+export type ZONE_AREA_NAME = keyof typeof ZONE_AREA;
