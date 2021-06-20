@@ -31,6 +31,11 @@ export const fixMonth = (month: number): number => {
     return month - 1;
 };
 
+export const reverseFixMonth = (month: number): number => {
+
+    return month + 1;
+};
+
 export const padValue = (value: number | string, totalLength: number, pad: string): string => {
 
     const fixed: string = String(value);

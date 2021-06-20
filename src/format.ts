@@ -4,7 +4,7 @@
  * @description Format
  */
 
-import { padValue } from "./util";
+import { padValue, reverseFixMonth } from "./util";
 
 export type PreFormatResult = {
 
@@ -22,7 +22,7 @@ export const preFormat = (date: Date): PreFormatResult => {
 
     return {
         year: date.getUTCFullYear(),
-        month: date.getUTCMonth() + 1,
+        month: reverseFixMonth(date.getUTCMonth()),
         day: date.getUTCDate(),
         weekDay: date.getUTCDay(),
         hour: date.getUTCHours(),

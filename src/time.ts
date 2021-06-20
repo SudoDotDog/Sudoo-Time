@@ -31,20 +31,23 @@ export class Time {
     }
 
     public getTime(): number {
+
         return this._utc;
     }
+
     public getDate(): Date {
+
         return new Date(this._utc);
     }
 
-    public toUTCString(pattern: string): string {
+    public formatUTC(pattern: string): string {
 
         const date: Date = new Date(this._utc);
         const pre: PreFormatResult = preFormat(date);
         return formatWithPattern(pre, pattern);
     }
 
-    public toString(pattern: string): string {
+    public formatLocal(pattern: string): string {
 
         const date: Date = new Date(this.getLocalTime());
         const pre: PreFormatResult = preFormat(date);
@@ -59,5 +62,15 @@ export class Time {
     public getTimeOffset(): number {
 
         return Math.floor(this._zone * TIME_IN_MILLISECONDS.HOUR);
+    }
+
+    public toString(): string {
+
+        return this.getDate().toString();
+    }
+
+    public toLocalString(): string {
+
+        return new Date(this.getLocalTime()).toString();
     }
 }
