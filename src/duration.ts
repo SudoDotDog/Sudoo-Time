@@ -4,6 +4,8 @@
  * @description Duration
  */
 
+import { TIME_CHANGE } from "@sudoo/magic";
+
 const floorIfNeeded = (value: number, floor?: boolean): number => {
 
     if (typeof floor !== 'boolean') {
@@ -65,8 +67,7 @@ export class Duration {
     public toMinutes(floor?: boolean): number {
 
         return floorIfNeeded(
-            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-            this.toSeconds() / 60,
+            this.toSeconds() / TIME_CHANGE.SECOND_TO_MINUTE,
             floor,
         );
     }
@@ -74,8 +75,7 @@ export class Duration {
     public toHours(floor?: boolean): number {
 
         return floorIfNeeded(
-            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-            this.toMinutes() / 60,
+            this.toMinutes() / TIME_CHANGE.MINUTE_TO_HOUR,
             floor,
         );
     }
@@ -83,8 +83,7 @@ export class Duration {
     public toDays(floor?: boolean): number {
 
         return floorIfNeeded(
-            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-            this.toHours() / 24,
+            this.toHours() / TIME_CHANGE.HOUR_TO_DAY,
             floor,
         );
     }
@@ -95,11 +94,9 @@ export class Duration {
 
         milliseconds += getAssertNumber(config.milliseconds);
         milliseconds += getAssertNumber(config.seconds) * 1000;
-        /* eslint-disable @typescript-eslint/no-magic-numbers */
-        milliseconds += getAssertNumber(config.minutes) * 1000 * 60;
-        milliseconds += getAssertNumber(config.hours) * 1000 * 60 * 60;
-        milliseconds += getAssertNumber(config.days) * 1000 * 60 * 60 * 24;
-        /* eslint-enable @typescript-eslint/no-magic-numbers */
+        milliseconds += getAssertNumber(config.minutes) * 1000 * TIME_CHANGE.SECOND_TO_MINUTE;
+        milliseconds += getAssertNumber(config.hours) * 1000 * TIME_CHANGE.SECOND_TO_MINUTE * TIME_CHANGE.MINUTE_TO_HOUR;
+        milliseconds += getAssertNumber(config.days) * 1000 * TIME_CHANGE.SECOND_TO_MINUTE * TIME_CHANGE.MINUTE_TO_HOUR * TIME_CHANGE.HOUR_TO_DAY;
 
         return milliseconds;
     }
