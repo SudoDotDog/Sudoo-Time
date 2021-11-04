@@ -44,6 +44,31 @@ export class Duration {
         return new Duration(config);
     }
 
+    public static fromDays(days: number): Duration {
+
+        return new Duration({ days });
+    }
+
+    public static fromHours(hours: number): Duration {
+
+        return new Duration({ hours });
+    }
+
+    public static fromMinutes(minutes: number): Duration {
+
+        return new Duration({ minutes });
+    }
+
+    public static fromSeconds(seconds: number): Duration {
+
+        return new Duration({ seconds });
+    }
+
+    public static fromMilliseconds(milliseconds: number): Duration {
+
+        return new Duration({ milliseconds });
+    }
+
     private readonly _milliseconds: number;
 
     private constructor(config: DurationConfig) {
